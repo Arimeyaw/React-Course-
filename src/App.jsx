@@ -1,33 +1,36 @@
 import { useState } from "react";
 import "./App.css";
-
-function Greeting({ name, age }) {
-  return (
-    <h1>
-      Hello, I am {name}, i am {age} years old!
-    </h1>
-  );
-}
-
 function App() {
-  const [showGreeting, setShowGreeting] = useState(false);
-  function toggleGreeting() {
-    setShowGreeting(!showGreeting);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleNameChange(event) {
+    const value = event.target.value;
+    setName(value);
+
+  }
+  function handleEmailChange(event) {
+    const value = event.target.value;
+    setEmail(value);
+  }
+  function handlePasswordChange(event) {
+    const value = event.target.value;
+    setPassword(value);
   }
   return (
     <div>
-      <button onClick={toggleGreeting}>Toggle Greetings</button>
-      {showGreeting && <Greeting name="Arimeyaw" age={24} />}
-      {/* <Greeting name = {"Bartah"} age = {25}/>
-      <Greeting name = {"Mohammed"} age = {26}/>
-      <Greeting name={"Tymer"} age = {27}/> */}
+      <input type="text" placeholder="name..." onChange={handleNameChange} />
+      <p>{name}</p>
+      <input type="text" placeholder="email" onChange={handleEmailChange} />
+      <p>{email}</p>
+      <input
+        type="password"
+        placeholder="password"
+        onChange={handlePasswordChange}
+      />
+      <p>{password}</p>
     </div>
   );
 }
-// function getName (){
-//   return "Gigo";
-// }
-
-//Component = funtion that return JSX
-
 export default App;
